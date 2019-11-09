@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <ul>
+            <li v-for="(fruit, index) in fruits">{{index}}{{fruit}}</li>
+        </ul>
+        <ul>
+            <li v-for="(value, key, i) in object">{{ i }}.{{ key }}:{{ value }}</li>
+        </ul>
+        <ul>
+            <li v-for="number in 10">{{number}}</li>
+        </ul>
+        <div v-for="(fruit, index) in fruits" :key="fruit">
+            <p>{{ fruit }}</p>
+            <input type="text">
+        </div>
+        <button v-on:click="remove">先頭を削除</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                fruits:['りんご', 'バナナ', 'ぶどう'],
+                object:{
+                    firstName:'秀雄',
+                    lastName:'貝塚',
+                    age: 31
+                }
+            },
+            methods:{
+                remove:function (){
+                    this.fruits.shift()
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

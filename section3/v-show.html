@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+    <p v-show="ok">OK</p>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                ok:true,
+            },
+        })
+    </script>
+</body>
+
+</html>
