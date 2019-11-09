@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        v-bind,v-html,v-onceについて
+        <p v-once>{{message}}</p>
+        <p>{{number + 5}}</p>
+        <p>{{ ok ? 'YES' : 'NO'}}</p>
+        <p>{{ sayHello() }}</p>
+        <div v-html="returnHtml()"></div>
+        <a :href="url">Google</a>
+        <!-- <a :[attribute]="urlUdemy" :id="num">Udemy</a> -->
+        <!-- <a v-bind="{href: urlUdemy, id: num}">Udemy</a> -->
+        <a v-bind="udemyObject">Udemy</a>
+        <button v-on:click="reverseMessage">反転</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                message: "Hello, World",
+                number: 3,
+                ok: true,
+                attribute: 'href',
+                url: 'https://www.google.com/',
+                // urlUdemy:'https://www.udemy.com/',
+                // num: 5,
+                udemyObject: {
+                    href:'https://www.udemy.com/',
+                    id: 5
+                }
+            },
+            methods:{
+                reverseMessage: function(){
+                     this.message = this.message.split('').reverse().join('')
+                },
+                sayHello: function(){
+                    this.message = 'VUE'
+                    return 'Hi';
+                },
+                returnHtml: function(){
+                    return '<h1>h1だ</h1>'
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <p>現在{{number}}回クリックされてます。</p>
+        <button v-on:click="countUp(2)">カウントアップ</button>
+        <button v-on:[event]="countUp(2)">カウントアップ</button>
+        <button @click="countUp(2)">カウントアップ</button>
+        
+        <p v-on:mousemove="getMousePostion($event, 2)">マウスをのせて<span v-on:mousemove.stop>反応しない</span></p>
+        <a v-on:click.prevent href="https://www.udemy.com/" >Udemy</a>
+        <input type="text" v-on:keyup.enter="keyUp">
+        <p>X:{{x}}, Y:{{y}}</p>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                number: 0,
+                x: 0,
+                y: 0,
+                event: 'click'
+            },
+            methods:{
+                countUp: function(times){
+                     this.number += 1 * times
+                },
+                getMousePostion: function(event, divideNumber){
+                    console.log(event);
+                    this.x = event.clientX / divideNumber;
+                    this.y = event.clientY / divideNumber;
+                },
+                noEvent: function(event) {
+                    event.preventDefault();
+                },
+                keyUp: function() {
+                    alert('o');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

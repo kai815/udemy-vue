@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <p>{{ counter }}</p>
+        <p>{{ otherCounter }}</p>
+        <p>{{ lessThanThreeComputed }}</p>
+        <p>{{ lessThanThreeMethod() }}</p>
+        <button v-on:click="countUp">カウントアップ</button>
+        <button v-on:click="otherUp">別のアップアップ</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                counter: 0,
+                otherCounter: 0,
+            },
+            methods:{
+                countUp:function(){
+                    this.counter ++
+                },
+                otherUp:function(){
+                    this.otherCounter ++
+                },
+                lessThanThreeMethod:function(){
+                    console.log('methods');
+                    return this.counter > 3 ? '3より上' : '3以下' 
+                }
+            },
+            computed: {
+                lessThanThreeComputed:function(){
+                    console.log('computed');
+                    return this.counter > 3 ? '3より上' : '3以下' 
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
