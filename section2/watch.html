@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <p>{{ counter }}</p>
+        <p>{{ lessThanThree }}</p>
+        <button v-on:click="countUp">カウントアップ</button>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                counter: 0,
+            },
+            methods:{
+                countUp:function(){
+                    this.counter ++
+                }
+            },
+            computed: {
+                lessThanThree:function(){
+                    console.log('computed');
+                    return this.counter > 3 ? '3より上' : '3以下' 
+                }
+            },
+            watch: {
+                counter: function(){
+                    var vm = this;
+                    setTimeout(function(){
+                        vm.counter = 0;
+                    }, 3000)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
