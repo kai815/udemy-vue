@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+    <template v-if="templateOk">
+        <p>Yeaah!</p>
+        <p>Wow!!</p>
+        <p>Oh!</p>
+    </template>
+    <button v-on:click="button">ボタン</button>
+    <p v-if="ok">OK</p>
+    <p v-else-if="maybeOK">MaybeOK</p>
+    <p v-else>NotOK...</p>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                ok:false,
+                maybeOK: true,
+                templateOk: true
+            },
+            methods:{
+                button: function(){
+                    console.log(this);
+                    this.templateOk = !this.templateOk;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
