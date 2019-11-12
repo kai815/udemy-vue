@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <p>{{message}}</p>
+        <p>{{name}}</p>
+        <p>{{myData}}</p>
+        <hello></hello>
+        <button v-on:click=' message = "変更"'>変更</button>
+        <!-- <button v-on:click='changeMessage'>変更</button> -->
+    </div>
+    <div id='app2'></div>
+    <hello></hello>
+    <div id='app3'></div>
+    <hello></hello>
+    <div id='app4'>
+        <h1>こんにちは{{name}}</h1>
+        <button v-on:click="name = 'kaizuka'">名前変更</button>
+        <button v-on:click="destroy">破壊</button>
+        <hello></hello>
+    </div>
+    <script>
+        var data = {
+            message: 'こんにちは',
+            name: '秀雄'
+        };
+        Vue.component('hello', {
+            template:'<p>こんにちは</p>'
+        });
+        var vm1 = new Vue({
+            data:data,
+            // methods:{
+            //     chageMessage: function(){
+            //         this.message = '変更されました';
+            //     }
+            // },
+            computed:{
+                myData: function(){
+                    return this.$data;
+                }
+            }
+        });
+        vm1.$mount('#app');
+
+        new Vue({
+            data:{
+                name:'貝塚'
+            },
+            template:'<h1>こんにちは、{{name}}</h1>'
+        }).$mount('#app2');
+
+        new Vue({
+            data:{
+                name:'貝塚'
+            },
+            render:function(createElement) {
+                console.log(createElement('h1', 'こんにちは' + this.name));
+                return createElement('h1', 'こんにちは' + this.name);
+            }
+        }).$mount('#app3');
+
+        var dir = document.createElement('div');
+        console.log(dir);
+        console.log(document);
+        console.dir(document);
+
+        new Vue({
+            el:'#app4',
+            data:{
+                name:'hideo'
+            },
+            beforeCreate: function(){
+                console.log('beforeCreate');
+            },
+            created: function(){
+                console.log('created');
+            },
+            beforeMount: function(){
+                console.log('beforeMount');
+            },
+            mounted: function(){
+                console.log('mounted')
+            },
+            beforeUpdate: function(){
+                console.log('beforeUpdate');
+            },
+            updated: function(){
+                console.log('updated');
+            },
+            beforeDestroy:function(){
+                console.log('beforeDestroy');
+            },
+            destroyed:function(){
+                console.log('destroyed');
+            },
+            methods:{
+                destroy: function(){
+                    this.$destroy();
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

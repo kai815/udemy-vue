@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <p>{{message}}</p>
+        <p>{{name}}</p>
+        <button v-on:click="changeAddedProperty">ボタン</button>
+    </div>
+    <script>
+        var vm1 = new Vue({
+            el:'#app',
+            data:{
+                message: "インスタンス1",
+                name: "秀雄"
+            },
+            methods: {
+                changeAddedProperty:function(){
+                    vm1.message = "変わった"
+                    vm1.name = "貝塚";
+                }
+            }
+        })
+        // vm1.message = "メッセージ";
+        // vm1.name = "hideo";
+        console.log(vm1);
+            </script>
+</body>
+
+</html>

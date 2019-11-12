@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <p>{{message}}</p>
+        <p>{{name}}</p>
+        <p>{{myData}}</p>
+    </div>
+    <script>
+        var data = {
+            message: 'こんにちは',
+            name: '秀雄'
+        }
+        var vm1 = new Vue({
+            el:'#app',
+            data:data,
+            computed:{
+                myData: function(){
+                    return this.$data;
+                }
+            }
+        })
+        console.log(vm1.$data);
+        console.log(data === vm1.$data);
+        console.log(vm1);
+            </script>
+</body>
+
+</html>

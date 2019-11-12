@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang=>
+<head>
+<meta charset="UTF-8">
+<title>Study vuejs</title>
+</head>
+<body>
+    <script src='vue.js'></script>
+    
+    <div id='app'>
+        <p>{{message}}</p>
+        <p>{{name}}</p>
+        <p>{{myData}}</p>
+    </div>
+    <div id='app2'></div>
+    <div id='app3'>
+    <script>
+        var data = {
+            message: 'こんにちは',
+            name: '秀雄'
+        }
+        var vm1 = new Vue({
+            data:data,
+            computed:{
+                myData: function(){
+                    return this.$data;
+                }
+            }
+        })
+        vm1.$mount('#app');
+
+        new Vue({
+            data:{
+                name:'貝塚'
+            },
+            template:'<h1>こんにちは、{{name}}</h1>'
+        }).$mount('#app2');
+
+        new Vue({
+            data:{
+                name:'貝塚'
+            },
+            render:function(createElement) {
+                console.log(createElement('h1', 'こんにちは' + this.name));
+                return createElement('h1', 'こんにちは' + this.name);
+            }
+        }).$mount('#app3');
+
+        var dir = document.createElement('div');
+        console.log(dir);
+        console.log(document);
+        console.dir(document);
+    </script>
+</body>
+
+</html>
