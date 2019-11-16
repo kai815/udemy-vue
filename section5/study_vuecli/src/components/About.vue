@@ -4,9 +4,3 @@
     <input>
   </div>
 </template>
-<script>
-export default {
-    destroyed() {
-    }
-}
-</script>
