@@ -1,13 +1,20 @@
 <template>
   <div>
     <LikeHeader></LikeHeader>
-    <LikeNumber></LikeNumber>
+    <h2>{{ number }}</h2>
+    <LikeNumber v-bind:total-number="number" v-on:my-click="number = $event"></LikeNumber>
+    <LikeNumber v-bind:total-number="number" test-props="テスト"></LikeNumber>
   </div>
 </template>
 <script>
 import LikeHeader from "./components/LikeHeader.vue";
 export default {
-    components: {
+  data(){
+      return {
+          number:10,
+      }
+  },
+  components: {
       LikeHeader
   }
 }
