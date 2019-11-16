@@ -1,3 +1,24 @@
 <template>
-  <h1>トータルのいいね</h1>
+  <div>
+    <h3>はじめまして</h3>
+  </div>
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+      user: {
+        firstName: 'hideo',
+        lastName: 'kaizuka'
+      }
+    }
+  }
+}
+
+</script>
+<style scoped>
+/* h1 {
+  color:red;
+} */
+</style>
