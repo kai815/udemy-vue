@@ -33,6 +33,14 @@ Vue.component('LikeNumber', LikeNumber);
 //     el.style.boxShadow = '0.2px 5px rgba(0,0,0,0.26)';
 //   }
 // })
+Vue.filter("upperCaseTitle", function(value){
+  return value.toUpperCase();
+})
+Vue.mixin({
+  created(){
+    // console.log("global mixin");
+  }
+})
 
 new Vue({
   // render: h => h(App),
