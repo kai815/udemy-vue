@@ -1,8 +1,37 @@
 <template>
+<div>
   <p v-border:solid.round.shadow="{width: '5px', color:'red'}">Home</p>
+  <h2>{{ title | upperCaseTitle }}</h2>
+  <h2>{{ title | lowerCase }}</h2>
+  <p>{{number}}</p>
+  <button @click="number++">+1</button>
+  <CountNumber></CountNumber>
+</div>
 </template>
 <script>
+import CountNumber from "./CountNumber.vue"
 export default {
+    data() {
+        return {
+            tmpData:"hello",
+            title: "Welcom to Tokyou",
+            subTitle: "Tokyo is a great city",
+            number:0
+        };
+    },
+    components:{
+        CountNumber
+    },
+    // computed: {
+    //     upperCaseTitle() {
+    //         return this.title.toUpperCase();
+    //     }
+    // },
+    filters: {
+        lowerCase(value) {
+            return value.toLowerCase();
+        }
+    },
     directives: {
         border(el, binding){
             el.style.borderWidth = binding.value.width;
